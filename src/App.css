@@ -1,38 +1,25 @@
-.App {
-  text-align: center;
-}
+@import '~antd/dist/antd.css';
+@import url('https://fonts.googleapis.com/css2?family=Barlow&family=Noto+Sans+SC');
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.ant-menu{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 64px;
+  padding-right: 10vw;
+  padding-left: 10vw;
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  background-color: rgba(255, 255, 255, 0.86);
+  z-index: 100;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main {
+  margin-top: 84px;
+  margin-bottom: 96px;
+  padding-right: 10vw;
+  padding-left: 10vw;
 }
