@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState,useRef } from 'react';
 import './App.css';
-import { Layout, Menu } from 'antd';
-import { HomeOutlined, SearchOutlined, SettingOutlined } from '@ant-design/icons';
+import { Layout, Menu, Card, Avatar, Space, Button } from 'antd';
+import { HomeOutlined, SearchOutlined, RightOutlined, LeftOutlined } from '@ant-design/icons';
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,6 +12,7 @@ import {
 import { Row, Col } from 'antd';
 import { Carousel } from 'antd';
 import { Typography } from 'antd';
+const { Meta } = Card;
 
 const { Title } = Typography;
 
@@ -20,7 +21,7 @@ const contentStyle = {
   color: '#fff',
   lineHeight: '160px',
   textAlign: 'center',
-  background: '#364d79',
+  background: '#364d79',  
 };
 export default function App() {
   const { Header, Content, Footer } = Layout;
@@ -69,6 +70,7 @@ function Home() {
     height: '20vh',
     lineHeight: '25vh',
     textAlign: 'center',
+    paddingBottom: '25px',
   };
   
   const mainStyle2 = {
@@ -85,23 +87,96 @@ function Home() {
     background: '#FD8532',
     minHeight: '100vh'
   }
+
+  const slider = useRef(null);
+
   return (
     <div className="main">
       <Title level={2}>编辑推荐</Title>
-      <Carousel autoplay autoplaySpeed={5000}>
-        <div style={contentStyle}>
-          <img alt="ads" src="/images/banner-1.jpg" height="100%"/>
-        </div>
-        <div style={contentStyle}>
-          <img alt="ads" src="/images/banner-2.jpg" height="100%"/>
-        </div>
-        <div style={contentStyle}>
-          <img alt="ads" src="/images/banner-3.jpg" height="100%"/>
-        </div>
-        <div style={contentStyle}>
-          <img alt="ads" src="/images/banner-4.jpg" height="100%"/>
-        </div>
-      </Carousel>      
+
+      <div style={{marginBottom: '5px', marginRight:'5px'}}>
+        <Button size={'large'} type="text" onClick={() => slider.current.next()}><LeftOutlined/></Button>
+        <Button size={'large'} type="text" onClick={() => slider.current.prev()}><RightOutlined/></Button>
+      </div>
+     
+          <Carousel autoplay autoplaySpeed={5000} dots={false} ref={slider}>
+                <div>
+                  <Row style={{height:'100%'}}>
+                    <Col span={24} lg={{span: 12}}>
+                      <img style={{width:'100%'}} alt="ads" src="/images/banner-1.jpg"/>
+                    </Col>
+                    <Col span={24} lg={{span: 12}}>
+                    <Card>
+                      <Meta
+                        avatar={
+                          <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                        }
+                        title="Card title"
+                        description="This is the description"
+                      />
+                    </Card>
+                    </Col>
+                  </Row>
+                </div>
+
+                <div>
+                  <Row style={{height:'100%'}}>
+                    <Col span={24} lg={{span: 12}}>
+                      <img style={{width:'100%'}} alt="ads" src="/images/banner-2.jpg"/>
+                    </Col>
+                   <Col span={24} lg={{span: 12}}>
+                    <Card>
+                        <Meta
+                          avatar={
+                            <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                          }
+                          title="Card title"
+                          description="This is the description"
+                        />
+                      </Card>
+                   </Col>
+                  </Row>      
+                </div>
+                <div>
+                  <Row style={{height:'100%'}}>
+                    <Col span={24} lg={{span: 12}}>
+                      <img style={{width:'100%'}} alt="ads" src="/images/banner-3.jpg"/>
+                    </Col>
+                    <Col span={24} lg={{span: 12}}>
+                      <Card>
+                        <Meta
+                          avatar={
+                            <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                          }
+                          title="Card title"
+                          description="This is the description"
+                        />
+                      </Card>
+                    </Col>
+                  </Row>         
+                </div>
+
+                <div>
+                  <Row style={{height:'100%'}}>
+                      <Col span={24} lg={{span: 12}}>
+                        <img style={{width:'100%'}} alt="ads" src="/images/banner-4.jpg"/>
+                      </Col>
+                    <Col span={24} lg={{span: 12}}>
+                      <Card>
+                        <Meta
+                          avatar={
+                            <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                          }
+                          title="Card title"
+                          description="This is the description"
+                        />
+                      </Card>
+                    </Col>
+                    </Row>
+                </div>
+              
+          </Carousel> 
+             
       <div style={mainStyle2}/>
       <div style={mainStyle4}/>
       <div style={mainStyle3}/>
